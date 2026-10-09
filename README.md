@@ -1,1 +1,97 @@
-Two-Stage BJT Small-Signal Audio Amplifier Design & SimulationThis repository contains the design, theoretical calculations, and computer-aided simulation of a Two-Stage Common-Emitter (CE) BJT Transistor Amplifier. The design aims to achieve high voltage gain, broad frequency response, and low signal distortion under specific operating constraints.📌 Project OverviewSingle-stage BJT amplifiers often face trade-offs between high gain, stability, and signal integrity. To achieve the required voltage gain while maintaining stable DC operating conditions and low Total Harmonic Distortion (THD), a two-stage cascaded Common-Emitter configuration was implemented:Stage 1 (Pre-amplification): Provides initial signal amplification while preserving stability via emitter swamping resistance.Stage 2 (Power / Driver Stage): Delivers the remaining required gain and drives the low output load resistance without signal clipping.🎯 General SpecificationsParameterSpecification / Target ValueUnitInput Signal ($V_{in}$)$0.050$ ($50\text{ mV}_{rms}$)$\text{V}_{rms}$Target Voltage Gain ($A_v$)$180$ ($\approx 45.1\text{ dB}$)$\text{V/V}$Supply Voltage ($V_{CC}$)$+30.0$$\text{V DC}$Load Resistance ($R_{Load}$)$7000$ ($7\text{ k}\Omega$)$\Omega$Low Cutoff Frequency ($f_c$)$\le 50$$\text{Hz}$🛠️ Methodology & Workflow1. Theoretical Hand CalculationsDC Operating Point (Q-Point): Derived using voltage-divider biasing networks to establish stable base voltage ($V_B$), emitter current ($I_E$), and collector-emitter voltage ($V_{CE}$) independent of transistor beta ($\beta$) variations.AC Small-Signal Analysis: Calculated using hybrid-$\pi$ transistor models to evaluate transconductance ($g_m$), small-signal input impedance ($r_\pi$), individual stage gains, and total overall gain ($A_v = A_{v1} \times A_{v2}$).Frequency Response Design: Sized input, inter-stage, output coupling capacitors, and emitter bypass capacitors to set the lower cutoff frequency $f_c \le 50\text{ Hz}$.2. Schematic Capture & Multisim SimulationSchematic Creation: Designed the complete two-stage circuit using NI Multisim with standard E12/E24 component values and general-purpose NPN transistors (2N3904 & 2N2222).Transient Analysis: Simulated the output waveform under a $5\text{ kHz}$ sinusoidal input to verify peak output swing, symmetry, and gain accuracy.AC Sweep (Frequency Response): Plotted the Bode response to confirm the mid-band gain bandwidth and the $-3\text{ dB}$ cutoff frequency point.Harmonic Distortion (THD Analysis): Evaluated signal linearity and total harmonic distortion to ensure low-distortion amplification.⚙️ Circuit FeaturesVoltage-Divider Biasing: Ensures robust DC stability against thermal drift and component variations.AC Negative Feedback (Swamping Resistors): Unbypassed emitter resistors stabilize AC voltage gain and mitigate BJT non-linear distortion.AC Coupling & Bypassing: Capacitors isolate DC bias levels between stages while providing maximum AC gain in the signal passband.📊 Summary of ResultsVoltage Gain: The achieved voltage gain closely matches the design requirement of $A_v \approx 180$.Bandwidth: The low-frequency cutoff is successfully limited to $\approx 50\text{ Hz}$, providing a flat passband across standard audio frequencies.Signal Integrity: The transient simulation confirms clean, undistorted output sine wave swing across the $7\text{ k}\Omega$ load.👤 Author & Academic MetadataStudent: Omar Mohamed Kamalmohamed Elkhabbty-ECourse: Analogue Devices (T170B303)Institution: Kaunas University of Technology (KTU)Faculty: Faculty of Electrical and Electronics Engineering
+# Two-Stage BJT Small-Signal Audio Amplifier Design & Simulation
+
+
+
+This repository contains the design, theoretical calculations, and computer-aided simulation of a **Two-Stage Common-Emitter (CE) BJT Transistor Amplifier**. The design aims to achieve high voltage gain, broad frequency response, and low signal distortion under specific operating constraints.
+
+
+
+## 📌 Project Overview
+
+
+
+Single-stage BJT amplifiers often face trade-offs between high gain, stability, and signal integrity. To achieve the required voltage gain while maintaining stable DC operating conditions and low Total Harmonic Distortion (THD), a two-stage cascaded Common-Emitter configuration was implemented:
+
+
+
+1. **Stage 1 (Pre-amplification):** Provides initial signal amplification while preserving stability via emitter swamping resistance.
+
+2. **Stage 2 (Power / Driver Stage):** Delivers the remaining required gain and drives the low output load resistance without signal clipping.
+
+
+
+## 🎯 General Specifications
+
+
+
+| Parameter | Specification / Target Value | Unit |
+
+| :--- | :--- | :--- |
+
+| **Input Signal ($V_{in}$)** | $0.050$ ($50\text{ mV}_{rms}$) | $\text{V}_{rms}$ |
+
+| **Target Voltage Gain ($A_v$)** | $180$ ($\approx 45.1\text{ dB}$) | $\text{V/V}$ |
+
+| **Supply Voltage ($V_{CC}$)** | $+30.0$ | $\text{V DC}$ |
+
+| **Load Resistance ($R_{Load}$)** | $7000$ ($7\text{ k}\Omega$) | $\Omega$ |
+
+| **Low Cutoff Frequency ($f_c$)** | $\le 50$ | $\text{Hz}$ |
+
+
+
+## 🛠️ Methodology & Workflow
+
+
+
+### 1. Theoretical Hand Calculations
+
+- **DC Operating Point (Q-Point):** Derived using voltage-divider biasing networks to establish stable base voltage ($V_B$), emitter current ($I_E$), and collector-emitter voltage ($V_{CE}$) independent of transistor beta ($\beta$) variations.
+
+- **AC Small-Signal Analysis:** Calculated using hybrid-$\pi$ transistor models to evaluate transconductance ($g_m$), small-signal input impedance ($r_\pi$), individual stage gains, and total overall gain ($A_v = A_{v1} \times A_{v2}$).
+
+- **Frequency Response Design:** Sized input, inter-stage, output coupling capacitors, and emitter bypass capacitors to set the lower cutoff frequency $f_c \le 50\text{ Hz}$.
+
+
+
+### 2. Schematic Capture & Multisim Simulation
+
+- **Schematic Creation:** Designed the complete two-stage circuit using **NI Multisim** with standard E12/E24 component values and general-purpose NPN transistors (`2N3904` & `2N2222`).
+
+- **Transient Analysis:** Simulated the output waveform under a $5\text{ kHz}$ sinusoidal input to verify peak output swing, symmetry, and gain accuracy.
+
+- **AC Sweep (Frequency Response):** Plotted the Bode response to confirm the mid-band gain bandwidth and the $-3\text{ dB}$ cutoff frequency point.
+
+- **Harmonic Distortion (THD Analysis):** Evaluated signal linearity and total harmonic distortion to ensure low-distortion amplification.
+
+
+
+## ⚙️ Circuit Features
+
+- **Voltage-Divider Biasing:** Ensures robust DC stability against thermal drift and component variations.
+
+- **AC Negative Feedback (Swamping Resistors):** Unbypassed emitter resistors stabilize AC voltage gain and mitigate BJT non-linear distortion.
+
+- **AC Coupling & Bypassing:** Capacitors isolate DC bias levels between stages while providing maximum AC gain in the signal passband.
+
+
+
+## 📊 Summary of Results
+
+- **Voltage Gain:** The achieved voltage gain closely matches the design requirement of $A_v \approx 180$.
+
+- **Bandwidth:** The low-frequency cutoff is successfully limited to $\approx 50\text{ Hz}$, providing a flat passband across standard audio frequencies.
+
+- **Signal Integrity:** The transient simulation confirms clean, undistorted output sine wave swing across the $7\text{ k}\Omega$ load.
+
+
+
+## 👤 Author & Academic Metadata
+
+- **Student:** Omar Mohamed Kamalmohamed Elkhabbty-E
+
+- **Course:** Analogue Devices (`T170B303`)
+
+- **Institution:** Kaunas University of Technology (KTU)
+
+- **Faculty:** Faculty of Electrical and Electronics Engineering
